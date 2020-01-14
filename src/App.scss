@@ -1,0 +1,47 @@
+:root{
+  --footer-height:40px;
+  --login-button-height:35px;
+}
+input:active, input:focus{
+  outline: none;
+}
+
+
+.App{
+  font-size: 18px;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  
+  .background{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+  .main{
+    position: relative;
+    margin-top: 15vh;
+  }
+
+  .footer{
+    width: 100%;
+    height: var(--footer-height);
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    section{
+      font-family: 'Rock Salt';
+      font-style: normal;
+      font-weight: normal;
+      line-height: var(--footer-height);
+      margin-right: 3%;
+    }
+  }
+}
