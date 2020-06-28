@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { LOGIN } from "../../redux/actionTypes";
 
 const LoginForm = () => {
-  let uname;
-  let pword;
+  let name;
+  let password;
   const [message, setmessage] = useState("");
 
   const dispatch = useDispatch();
@@ -14,47 +14,25 @@ const LoginForm = () => {
     e.target[0].value = "";
     e.target[1].value = "";
     const body = {};
-    body.uname = uname;
-    body.pword = pword;
-    fetch("http://localhost:3000/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-      .then((response) => {
-        // we want the response even on error because it contains message
-        let json = response.json();
-        if (
-          (response.status >= 200 && response.status < 300) ||
-          (response.status >= 400 && response.status < 410)
-        ) {
-          return json;
-        } else {
-          return json.then(Promise.reject.bind(Promise));
-        }
-      })
-      .then((data) => {
-        if (data.success) {
-          localStorage.setItem("accessToken", data.accessToken);
-          localStorage.setItem("refreshToken", data.refreshToken);
-          setmessage("");
-          dispatch({ type: LOGIN, payload: data.user });
-        } else setmessage(data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    body.name = name;
+    body.password = password;
+    let usersDB = require("../../fakeDB/users.json").users;
+    let userExists = usersDB.find(
+      (user) => user.name === name && user.password === password
+    );
+    if (userExists) {
+      setmessage("");
+      dispatch({ type: LOGIN, payload: body });
+    } else setmessage("incorrect login info");
   };
 
   const changeHandler = (e) => {
     switch (e.target.name) {
-      case "uname":
-        uname = e.target.value;
+      case "name":
+        name = e.target.value;
         break;
-      case "pword":
-        pword = e.target.value;
+      case "password":
+        password = e.target.value;
         break;
 
       default:
@@ -65,25 +43,25 @@ const LoginForm = () => {
     <div>
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor="uname"> User name: </label>
+          <label htmlFor="name"> User name: </label>
           <input
             type="text"
             required
             autoComplete="off"
-            name="uname"
-            value={uname}
+            name="name"
+            value={name}
             onChange={changeHandler}
           />
         </div>
         <div>
-          <label htmlFor="pword">password: </label>
+          <label htmlFor="password">password: </label>
           <input
             type="password"
             required
             minLength="6  "
             autoComplete="off"
-            name="pword"
-            value={pword}
+            name="password"
+            value={password}
             onChange={changeHandler}
           />
         </div>
