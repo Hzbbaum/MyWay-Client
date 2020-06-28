@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { LOGGED_IN, LOGGED_OUT, ADMIN } from '../redux/appStateTypes';
+import { LOGGED_IN, LOGGED_OUT } from '../redux/appStateTypes';
 import { Redirect, Link } from 'react-router-dom';
 
 const Home = () => {
@@ -13,9 +13,6 @@ const Home = () => {
             break;
         case LOGGED_OUT:
             route = null;
-            break;
-        case ADMIN:
-            route = <Redirect exact to = "/admin"/>;
             break;
         default:
             break;
