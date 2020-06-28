@@ -49,13 +49,13 @@ const Trip = trip => {
       <div className="container">
         <div
           className="top"
-          style={{ backgroundImage: `url(${trip.tripinfo.pic})` }}
+          style={{ backgroundImage: `url(${trip.pic})` }}
         ></div>
         <div className={classes}>
           <div className="left">
             <div className="details">
-              <h1>{trip.tripinfo.destination}</h1>
-              <p>{trip.tripinfo.price_usd}$</p>
+              <h1>{trip.destination}</h1>
+              <p>{trip.price_usd}$</p>
             </div>
             <div className="buy" onClick={followHandler}>
               <i className="material-icons">favorite</i>
@@ -66,7 +66,7 @@ const Trip = trip => {
               <i className="material-icons">done</i>
             </div>
             <div className="details">
-              <h1>{trip.tripinfo.destination}</h1>
+              <h1>{trip.destination}</h1>
               <p>Added to your watchlist</p>
             </div>
             <div className="remove" onClick={followHandler}>
@@ -87,13 +87,13 @@ const Trip = trip => {
                 <th>end</th>
               </tr>
               <tr>
-                <td>{trip.tripinfo.sdate}</td>
-                <td>{trip.tripinfo.edate}</td>
+                <td>{trip.sdate}</td>
+                <td>{trip.edate}</td>
               </tr>
             </tbody>
           </table>
-          <p>{trip.tripinfo.description}</p>
-          <h3>only for {trip.tripinfo.price_usd}$</h3>
+          <p>{trip.description}</p>
+          <h3>only for {trip.price_usd}$</h3>
         </div>
       </div>
     </div>

@@ -7,8 +7,6 @@ import LogoutButton from "./LogoutButton";
 import "./header.scss";
 
 function Header() {
-  // const [uname, setuname] = useState("");
-  // const [pword, setpword] = useState("");
   const user = useSelector(state => state.user);
   const logState = useSelector(state => state.appState);
   const loggedin = logState.appState!== LOGGED_OUT;

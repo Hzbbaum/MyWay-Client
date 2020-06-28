@@ -1,0 +1,9 @@
+{
+    "users":[
+        {
+            "name":"Hillel Buchsbaum",
+            "password":"1234",
+            "follows":[1,4]
+        }
+    ]
+}
