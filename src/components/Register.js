@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGIN } from "../redux/actionTypes";
-
+import "./register.scss"
 const Register = () => {
   let uname;
   let fname;

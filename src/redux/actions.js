@@ -1,23 +1,18 @@
-import { UPDATE_TRIPS, LOGIN, LOGOUT, SET_ADMIN } from "./actionTypes";
+import { UPDATE_TRIPS, LOGIN, LOGOUT } from "./actionTypes";
 
-export const updateTrips = content => ({
+export const updateTrips = (content) => ({
   type: UPDATE_TRIPS,
   payload: {
-    content
-  }
+    content,
+  },
 });
 
-export const login = user => ({
+export const login = (user) => ({
   type: LOGIN,
-  payload: { user }
+  payload: { user },
 });
 
 export const logout = () => ({
-    type: LOGOUT,
-    payload: {  }
-  });
-
-  export const setAdmin = (newAppState) => ({
-    type: SET_ADMIN,
-    payload: { newAppState }
-  });
+  type: LOGOUT,
+  payload: {},
+});

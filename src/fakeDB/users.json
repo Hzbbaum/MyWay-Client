@@ -1,7 +1,7 @@
 {
     "users":[
        {
-          "name":"Hillel Buchsbaum",
+          "name":"me",
           "password":"123456",
           "follows":[
              1,

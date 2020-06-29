@@ -20,16 +20,13 @@ function MyWayApp() {
   const dispatch = useDispatch();
   // on load, we fetch all trips for the user (sorted by the server so that followed should be first)
   useEffect(() => {
-    setTimeout(() => {
-      fetch("src/fakeDB/trips.json")
-        .then((response) => response.json)
-        .then((data) => {
-          console.log(data);
-          if (!tripsCompare(data, trips)) {
-            dispatch({ type: UPDATE_TRIPS, payload: data.results });
-          }
-        });
-    }, 100);
+    fetch("src/fakeDB/trips.json")
+      .then((response) => response.json)
+      .then((data) => {
+        if (!tripsCompare(data, trips)) {
+          dispatch({ type: UPDATE_TRIPS, payload: data.results });
+        }
+      });
     // we would like to update this if user_id changes. dispatch is just here so the eslint dosen't whine.
   }, [user_id, dispatch, appstate, trips]);
 
