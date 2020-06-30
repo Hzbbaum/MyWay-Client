@@ -20,13 +20,14 @@ const Trips = () => {
       break;
   }
 
-  const trips = useSelector((state) => state.trips.trips);
+  const trips = useSelector((state) => state.trips);
+  
   return (
     <div className="tripContainer main">
       {route}
       {trips &&
         !route &&
-        trips.map((trip) => <Trip tripinfo={trip} key={trip.vacation_id} />)}
+        trips.map((trip) => <Trip tripinfo={{...trip}} key={trip.vacation_id} />)}
     </div>
   );
 };

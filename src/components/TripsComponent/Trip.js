@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./trip.scss";
 
-const Trip = trip => {
-  const [classes, setclasses] = useState("bottom");
+const Trip = (trip) => {
+  const [classes, setclasses] = useState(
+    trip.tripinfo.follow ? "bottom clicked" : "bottom"
+  );
   const [followed, setFollowed] = useState(false);
-  const user_id = useSelector(state => state.user.user_id);
+  const user_id = useSelector((state) => state.user.user_id);
   const vacation_id = { vacation_id: trip.tripinfo.vacation_id };
 
-  const followHandler = event => {
+  const followHandler = (event) => {
     if (followed) {
       event.preventDefault();
       setclasses("bottom");
@@ -23,11 +25,11 @@ const Trip = trip => {
         method: "POST",
         headers: {
           Authorization: "Bearer " + aToken,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(user_id, vacation_id)
+        body: JSON.stringify(user_id, vacation_id),
       })
-        .then(response => {
+        .then((response) => {
           // we want the response even on error because it contains message
           let json = response.json();
           if (
@@ -39,8 +41,7 @@ const Trip = trip => {
             return json.then(Promise.reject.bind(Promise));
           }
         })
-        .then(data => {
-        });
+        .then((data) => {});
     }, 50);
   };
 
@@ -49,13 +50,13 @@ const Trip = trip => {
       <div className="container">
         <div
           className="top"
-          style={{ backgroundImage: `url(${trip.pic})` }}
+          style={{ backgroundImage: `url(${trip.tripinfo.pic})` }}
         ></div>
         <div className={classes}>
           <div className="left">
             <div className="details">
-              <h1>{trip.destination}</h1>
-              <p>{trip.price_usd}$</p>
+              <h1>{trip.tripinfo.destination}</h1>
+              <p>{trip.tripinfo.price_usd}$</p>
             </div>
             <div className="buy" onClick={followHandler}>
               <i className="material-icons">favorite</i>
@@ -66,7 +67,7 @@ const Trip = trip => {
               <i className="material-icons">done</i>
             </div>
             <div className="details">
-              <h1>{trip.destination}</h1>
+              <h1>{trip.tripinfo.destination}</h1>
               <p>Added to your watchlist</p>
             </div>
             <div className="remove" onClick={followHandler}>
@@ -87,13 +88,13 @@ const Trip = trip => {
                 <th>end</th>
               </tr>
               <tr>
-                <td>{trip.sdate}</td>
-                <td>{trip.edate}</td>
+                <td>{trip.tripinfo.sdate}</td>
+                <td>{trip.tripinfo.edate}</td>
               </tr>
             </tbody>
           </table>
-          <p>{trip.description}</p>
-          <h3>only for {trip.price_usd}$</h3>
+          <p>{trip.tripinfo.description}</p>
+          <h3>only for {trip.tripinfo.price_usd}$</h3>
         </div>
       </div>
     </div>

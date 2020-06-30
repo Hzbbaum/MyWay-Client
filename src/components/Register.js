@@ -4,8 +4,6 @@ import { LOGIN } from "../redux/actionTypes";
 import "./register.scss"
 const Register = () => {
   let uname;
-  let fname;
-  let lname;
   let pword;
   const [message, setmessage] = useState("");
 
@@ -17,8 +15,6 @@ const Register = () => {
     e.target[1].value = "";
     const body = {};
     body.uname = uname;
-    body.lname = lname;
-    body.fname = fname;
     body.pword = pword;
     fetch("http://localhost:3000/auth/register", {
       method: "POST",
@@ -43,8 +39,6 @@ const Register = () => {
         if (data.success) {
           setmessage("");
           dispatch({ type: LOGIN, payload: data.user });
-          localStorage.setItem("accessToken", data.accessToken);
-          localStorage.setItem("refreshToken", data.refreshToken);
         } else setmessage(data.message);
       })
       .catch((error) => {
@@ -60,13 +54,6 @@ const Register = () => {
       case "pword":
         pword = e.target.value;
         break;
-      case "fname":
-        lname = e.target.value;
-        break;
-      case "plname":
-        fname = e.target.value;
-        break;
-
       default:
         break;
     }
@@ -85,28 +72,7 @@ const Register = () => {
             onChange={changeHandler}
           />
         </div>
-        <div>
-          <label htmlFor="fname">first name: </label>
-          <input
-            type="text"
-            required
-            autoComplete="off"
-            name="fname"
-            value={pword}
-            onChange={changeHandler}
-          />
-        </div>
-        <div>
-          <label htmlFor="fname">last name: </label>
-          <input
-            type="text"
-            required
-            autoComplete="off"
-            name="lname"
-            value={pword}
-            onChange={changeHandler}
-          />
-        </div>
+        
         <div>
           <label htmlFor="pword">password: </label>
           <input

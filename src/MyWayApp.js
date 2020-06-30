@@ -14,21 +14,21 @@ import { UPDATE_TRIPS } from "./redux/actionTypes";
 
 function MyWayApp() {
   const user_id = useSelector((state) => state.user.user_id);
-  const trips = useSelector((state) => state.trip);
+  const trips = useSelector((state) => state.trips);
   const appstate = useSelector((state) => state.appState);
 
   const dispatch = useDispatch();
   // on load, we fetch all trips for the user (sorted by the server so that followed should be first)
-  useEffect(() => {
-    fetch("src/fakeDB/trips.json")
-      .then((response) => response.json)
-      .then((data) => {
-        if (!tripsCompare(data, trips)) {
-          dispatch({ type: UPDATE_TRIPS, payload: data.results });
-        }
-      });
+  useEffect(
+    () => {
+      let tripsDB = require("./fakeDB/trips.json").trips;
+      if (!checkTripArrayIdentical(tripsDB, trips)) {
+        dispatch({ type: UPDATE_TRIPS, payload: tripsDB });
+      }
+    },
     // we would like to update this if user_id changes. dispatch is just here so the eslint dosen't whine.
-  }, [user_id, dispatch, appstate, trips]);
+    [user_id, dispatch, appstate, trips]
+  );
 
   return (
     <div className="App">
@@ -60,12 +60,34 @@ function MyWayApp() {
 
 export default MyWayApp;
 
-function tripsCompare(tripsNew, tripsState) {
+/**
+ * returns true if all trips in a pair of trips arrays are true
+ **/
+function checkTripArrayIdentical(tripsNew, tripsState) {
   if (!Array.isArray(tripsNew) || !Array.isArray(tripsState)) return false;
   if (tripsNew.length !== tripsState.length) return false;
   for (let i = 0; i < tripsNew.length; i++) {
-    if (JSON.stringify(tripsState[i]) !== JSON.stringify(tripsNew[i]))
-      return false;
+    if (!checkPairTripsIdentical(tripsNew[i], tripsState[i])) return false;
   }
   return true;
+}
+/**
+ * returns true if all values if all values in a pair of trips are equal
+ * @param {*} newTrip
+ * @param {*} tripfromState
+ */
+function checkPairTripsIdentical(newTrip, tripfromState) {
+  if (
+    newTrip.vacation_id === tripfromState.vacation_id &&
+    newTrip.pic === tripfromState.pic &&
+    newTrip.destination === tripfromState.destination &&
+    newTrip.price_usd === tripfromState.price_usd &&
+    newTrip.sdate === tripfromState.sdate &&
+    newTrip.edate === tripfromState.edate &&
+    newTrip.description === tripfromState.description
+  )
+    return true;
+  else {
+    return false;
+  }
 }

@@ -1,28 +1,33 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Logo from "../../assets/Logo";
-import { LOGGED_OUT } from  "../../redux/appStateTypes";
+import { LOGGED_IN } from "../../redux/appStateTypes";
 import LoginForm from "./LoginForm";
 import LogoutButton from "./LogoutButton";
 import "./header.scss";
 
 function Header() {
-  const user = useSelector(state => state.user);
-  const logState = useSelector(state => state.appState);
-  const loggedin = logState.appState!== LOGGED_OUT;
+  const user = useSelector((state) => state.user);
+  const loggedin = useSelector((state) =>
+    state.appState === LOGGED_IN ? true : false
+  );
 
   return (
     <div className="header">
       <div className="left">
-        <Logo/>
+        <Logo />
         <h2>MY WAY</h2>
       </div>
       <div className="right">
-        {loggedin? <span> hello {user.fname} {user.lname} </span>:null}
-        {loggedin? <LogoutButton/>:<LoginForm/>}
+        {loggedin ? (
+          <span>
+            hello {user.name}
+          </span>
+        ) : null}
+        {loggedin ? <LogoutButton /> : <LoginForm />}
       </div>
     </div>
   );
 }
 
-export default Header
+export default Header;
