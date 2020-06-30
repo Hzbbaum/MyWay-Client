@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7b24823e50d352bafbb69f63fd81381",
+    "revision": "125310cd157f16af583a2cd0a6deced0",
     "url": "/MyWay-Client/index.html"
   },
   {
-    "revision": "2b0fcd2138a87bfb0a54",
+    "revision": "695c1b8f73d1980a7b45",
     "url": "/MyWay-Client/static/css/main.df61099b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MyWay-Client/static/js/2.00dc829e.chunk.js.LICENSE"
   },
   {
-    "revision": "2b0fcd2138a87bfb0a54",
-    "url": "/MyWay-Client/static/js/main.29a788a1.chunk.js"
+    "revision": "695c1b8f73d1980a7b45",
+    "url": "/MyWay-Client/static/js/main.966aa037.chunk.js"
   },
   {
     "revision": "76d78ac24205e932ef02",
