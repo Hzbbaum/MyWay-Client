@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/myWay-client/static/css/main.df61099b.chunk.css",
-    "main.js": "/myWay-client/static/js/main.a7d1dcb7.chunk.js",
-    "main.js.map": "/myWay-client/static/js/main.a7d1dcb7.chunk.js.map",
-    "runtime-main.js": "/myWay-client/static/js/runtime-main.d1f64abe.js",
-    "runtime-main.js.map": "/myWay-client/static/js/runtime-main.d1f64abe.js.map",
-    "static/js/2.00dc829e.chunk.js": "/myWay-client/static/js/2.00dc829e.chunk.js",
-    "static/js/2.00dc829e.chunk.js.map": "/myWay-client/static/js/2.00dc829e.chunk.js.map",
-    "index.html": "/myWay-client/index.html",
-    "precache-manifest.36b837693506aef159cbc9eb19c528bd.js": "/myWay-client/precache-manifest.36b837693506aef159cbc9eb19c528bd.js",
-    "service-worker.js": "/myWay-client/service-worker.js",
-    "static/css/main.df61099b.chunk.css.map": "/myWay-client/static/css/main.df61099b.chunk.css.map",
-    "static/js/2.00dc829e.chunk.js.LICENSE": "/myWay-client/static/js/2.00dc829e.chunk.js.LICENSE",
-    "static/media/anotherbeach.jpg": "/myWay-client/static/media/anotherbeach.995e34c4.jpg"
+    "main.css": "/MyWay-Client/static/css/main.df61099b.chunk.css",
+    "main.js": "/MyWay-Client/static/js/main.a7d1dcb7.chunk.js",
+    "main.js.map": "/MyWay-Client/static/js/main.a7d1dcb7.chunk.js.map",
+    "runtime-main.js": "/MyWay-Client/static/js/runtime-main.5206a9a8.js",
+    "runtime-main.js.map": "/MyWay-Client/static/js/runtime-main.5206a9a8.js.map",
+    "static/js/2.00dc829e.chunk.js": "/MyWay-Client/static/js/2.00dc829e.chunk.js",
+    "static/js/2.00dc829e.chunk.js.map": "/MyWay-Client/static/js/2.00dc829e.chunk.js.map",
+    "index.html": "/MyWay-Client/index.html",
+    "precache-manifest.c4d16eb843f870cd103e3e22b36663d1.js": "/MyWay-Client/precache-manifest.c4d16eb843f870cd103e3e22b36663d1.js",
+    "service-worker.js": "/MyWay-Client/service-worker.js",
+    "static/css/main.df61099b.chunk.css.map": "/MyWay-Client/static/css/main.df61099b.chunk.css.map",
+    "static/js/2.00dc829e.chunk.js.LICENSE": "/MyWay-Client/static/js/2.00dc829e.chunk.js.LICENSE",
+    "static/media/anotherbeach.jpg": "/MyWay-Client/static/media/anotherbeach.995e34c4.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d1f64abe.js",
+    "static/js/runtime-main.5206a9a8.js",
     "static/js/2.00dc829e.chunk.js",
     "static/css/main.df61099b.chunk.css",
     "static/js/main.a7d1dcb7.chunk.js"
