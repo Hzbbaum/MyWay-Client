@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { LOGIN } from "../../redux/actionTypes";
 import "./trip.scss";
 
 const Trip = (trip) => {
   const [classes, setclasses] = useState(
     trip.tripinfo.follow ? "bottom clicked" : "bottom"
   );
+
   const [followed, setFollowed] = useState(false);
-  const user_id = useSelector((state) => state.user.user_id);
-  const vacation_id = { vacation_id: trip.tripinfo.vacation_id };
+  const user = useSelector((state) => state.user);
+  const vacation_id = trip.tripinfo.vacation_id;
+  const dispatch = useDispatch();
 
   const followHandler = (event) => {
     if (followed) {
@@ -19,30 +22,10 @@ const Trip = (trip) => {
       setclasses("bottom clicked");
       setFollowed(true);
     }
-    const aToken = localStorage.getItem("accessToken");
-    setTimeout(() => {
-      fetch("http://localhost:3000/vacations/follow", {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + aToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user_id, vacation_id),
-      })
-        .then((response) => {
-          // we want the response even on error because it contains message
-          let json = response.json();
-          if (
-            (response.status >= 200 && response.status < 300) ||
-            (response.status >= 400 && response.status < 410)
-          ) {
-            return json;
-          } else {
-            return json.then(Promise.reject.bind(Promise));
-          }
-        })
-        .then((data) => {});
-    }, 50);
+    if (user.follows.includes(+vacation_id))
+      user.follows = user.follows.filter(item => item!==+vacation_id);
+    else user.follows.push(+vacation_id);
+    dispatch({ type: LOGIN, payload: user });
   };
 
   return (

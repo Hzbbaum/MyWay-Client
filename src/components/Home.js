@@ -7,7 +7,7 @@ const Home = () => {
     
     const appstate = useSelector(state => state.appState);
     let route;
-    switch (appstate.appState) {
+    switch (appstate) {
         case LOGGED_IN:
             route = <Redirect exact to ="/trips"/>;
             break;

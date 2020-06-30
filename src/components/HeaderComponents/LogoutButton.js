@@ -8,14 +8,11 @@ const LogoutButton = () => {
   const logOutHandler = (e) => {
     dispatch({ type: LOGOUT_TRIPS });
     dispatch({ type: LOGOUT_USER });
-    localStorage.setItem("refreshToken", null);
-    localStorage.setItem("accessToken", null);
   };
 
   return (
     <div>
       <button className="login" onClick={logOutHandler}>
-        {" "}
         logout
       </button>
     </div>

@@ -1,8 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { LOGIN } from "../redux/actionTypes";
-import "./register.scss"
+import { LOGGED_IN, LOGGED_OUT } from  "../redux/appStateTypes"
+
+import "./register.scss";
 const Register = () => {
+  const appstate = useSelector((state) => state.appState);
+  let route;
+  switch (appstate) {
+    case LOGGED_IN:
+      route = <Redirect exact to="/trips" />;
+      break;
+    case LOGGED_OUT:
+      route = null;
+      break;
+    default:
+      break;
+  }
+
   let uname;
   let pword;
   const [message, setmessage] = useState("");
@@ -72,8 +88,9 @@ const Register = () => {
             onChange={changeHandler}
           />
         </div>
-        
+
         <div>
+          {route}
           <label htmlFor="pword">password: </label>
           <input
             type="password"

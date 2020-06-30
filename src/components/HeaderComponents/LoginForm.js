@@ -22,7 +22,7 @@ const LoginForm = () => {
     );
     if (userExists) {
       setmessage("");
-      dispatch({ type: LOGIN, payload: {...body} });
+      dispatch({ type: LOGIN, payload: userExists });
     } else setmessage("incorrect login info");
   };
 
